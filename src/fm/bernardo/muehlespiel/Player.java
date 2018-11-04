@@ -18,11 +18,15 @@ final class Player {
         dialog.setHeaderText(spieler);
         dialog.setContentText("Bitte geben Sie einen Namen ein:");
         Optional<String> result = dialog.showAndWait();
-        if (result.isPresent() && result.get().equals("")) {
-            setName(spieler);
-            return;
+        if (result.isPresent()) {
+            if (result.get().equals("")) {
+                setName(spieler);
+                return;
+            }
+            this.name = result.get();
+        } else {
+            System.exit(0);
         }
-        this.name = result.get();
 
     }
 

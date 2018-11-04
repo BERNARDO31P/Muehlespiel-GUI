@@ -40,6 +40,8 @@ public final class Main extends Application {
             mainWindow.setWidth(newVal.doubleValue() - 25);
         });
 
+        mainWindow.setOnCloseRequest(e -> System.exit(0));
+
     }
 
     public static void main(String[] args) {
