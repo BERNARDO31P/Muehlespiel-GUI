@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="mühlespiel:jar">
+    <output-path>$USER_HOME$/Schreibtisch</output-path>
+    <root id="archive" name="mühlespiel.jar">
+      <element id="module-output" name="mühlespiel" />
+    </root>
+  </artifact>
+</component>
