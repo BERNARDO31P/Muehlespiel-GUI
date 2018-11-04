@@ -48,7 +48,7 @@ final class PlayField {
                 player.occupied.add(field);
                 players.set(playing, player);
             } else {
-                alert.setContentText("Sie verfügen bereits neun Felder.");
+                alert.setContentText("Sie haben bereits alle neun Felder verbraucht.");
                 alert.showAndWait();
             }
 
