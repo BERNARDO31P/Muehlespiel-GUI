@@ -17,6 +17,8 @@ final class PlayField {
     private final GridPane playField = new GridPane();
     private final ArrayList<Player> players = new ArrayList<>();
     private int playing;
+    private final Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
 
     private void generatePlayField() {
 
@@ -39,18 +41,20 @@ final class PlayField {
 
         Field field = (Field) actionEvent.getSource();
         if (field.owner == null) {
-            field.owner = players.get(playing).name;
-            field.changeColor(players.get(playing).color);
-            Player player = players.get(playing);
-            player.occupied.add(field);
-            players.set(playing, player);
+            if (players.get(playing).occupied.size() <= 9) {
+                field.owner = players.get(playing).name;
+                field.changeColor(players.get(playing).color);
+                Player player = players.get(playing);
+                player.occupied.add(field);
+                players.set(playing, player);
+            } else {
+                alert.setContentText("Sie verfügen bereits neun Felder.");
+                alert.showAndWait();
+            }
 
             if (playing == 0) playing = 1;
             else playing = 0;
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Informations Dialog");
-            alert.setHeaderText(null);
             alert.setContentText("Dieses Feld ist von " + field.owner + " besetzt.");
             alert.showAndWait();
         }
@@ -76,6 +80,8 @@ final class PlayField {
     PlayField() {
 
         this.playField.setId("mainWindow");
+        this.alert.setTitle("Informations Dialog");
+        this.alert.setHeaderText(null);
 
         Player player1 = new Player("red");
         player1.setName("Spieler1");
