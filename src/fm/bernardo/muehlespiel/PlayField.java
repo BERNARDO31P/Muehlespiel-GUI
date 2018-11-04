@@ -41,7 +41,7 @@ final class PlayField {
 
         Field field = (Field) actionEvent.getSource();
         if (field.owner == null) {
-            if (players.get(playing).occupied.size() <= 9) {
+            if (players.get(playing).occupied.size() < 9) {
                 field.owner = players.get(playing).name;
                 field.changeColor(players.get(playing).color);
                 Player player = players.get(playing);
