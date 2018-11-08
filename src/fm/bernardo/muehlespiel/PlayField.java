@@ -93,7 +93,7 @@ final class PlayField {
         this.playField.setHgap(15);
         this.playField.setVgap(15);
 
-        this.scene = new Scene(this.playField, 275, 300);
+        this.scene = new Scene(this.playField, 300, 300);
         this.scene.getStylesheets().add(this.getClass().getResource("css/main.css").toExternalForm());
         generatePlayField();
     }
