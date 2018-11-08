@@ -5,8 +5,8 @@ import javafx.scene.shape.Circle;
 
 final class Field extends Button {
 
-    String owner = null;
-    int id;
+    String owner;
+    private int id;
 
     final void changeColor(final String color) {
         this.setStyle("-fx-background-color: " + color);
