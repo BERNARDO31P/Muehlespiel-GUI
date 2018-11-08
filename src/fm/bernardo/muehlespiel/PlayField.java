@@ -83,9 +83,9 @@ final class PlayField {
         this.alert.setTitle("Informations Dialog");
         this.alert.setHeaderText(null);
 
-        Player player1 = new Player("red");
+        Player player1 = new Player("black");
         player1.setName("Spieler1");
-        Player player2 = new Player("blue");
+        Player player2 = new Player("gray");
         player2.setName("Spieler2");
 
         players.addAll(Arrays.asList(player1, player2));
