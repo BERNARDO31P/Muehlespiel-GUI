@@ -14,19 +14,19 @@ public final class Main extends Application {
     public final void start(final Stage mainWindow) {
 
         // Erstellung von einem Dialog
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Informations Dialog");
         alert.setHeaderText(null);
         alert.setContentText("Dieses Spiel wurde mit viel Liebe programmiert.\n© 2018 BERNARDO.FM - Alle Rechte vorbehalten.");
 
         // Abfangen von der Benutzerantwort
-        Optional<ButtonType> result = alert.showAndWait();
+        final Optional<ButtonType> result = alert.showAndWait();
 
         // Prüfung von der Benutzerantwort
         if (result.get() != ButtonType.OK) { System.exit(0); }
 
         // Erstellung von einem Spielfeld
-        PlayField playField = new PlayField();
+        final PlayField playField = new PlayField();
 
         // Definition der Fenstereigenschaften
         mainWindow.setTitle("Mühlespiel");

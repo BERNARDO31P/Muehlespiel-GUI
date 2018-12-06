@@ -16,7 +16,7 @@ final class Player {
     final void setName(final String spieler) {
 
         // Kreation von einem Eingabedialog
-        TextInputDialog dialog = new TextInputDialog();
+        final TextInputDialog dialog = new TextInputDialog();
 
         // Setzung der Dialogeigenschaften
         dialog.setTitle("Namensdefinition");
@@ -24,7 +24,7 @@ final class Player {
         dialog.setContentText("Bitte geben Sie einen Namen ein:");
 
         // Abfangen der Benutzereingabe
-        Optional<String> result = dialog.showAndWait();
+        final Optional<String> result = dialog.showAndWait();
 
         // Überprüfung der Eingabe
         if (result.isPresent()) {

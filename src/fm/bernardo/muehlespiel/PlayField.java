@@ -26,7 +26,7 @@ final class PlayField {
 
         // For Schleife zum Generieren von Spalten
         for (int width = 0; width < 7; width++) {
-            ColumnConstraints column = new ColumnConstraints();
+            final ColumnConstraints column = new ColumnConstraints();
             column.setHalignment(HPos.CENTER);
             column.setPercentWidth(100);
             this.playField.getColumnConstraints().add(column);
@@ -34,7 +34,7 @@ final class PlayField {
 
         // For Schleife zum Generieren von Reihen
         for (int length = 0; length < 7; length++) {
-            RowConstraints row = new RowConstraints();
+            final RowConstraints row = new RowConstraints();
             row.setPercentHeight(100);
             this.playField.getRowConstraints().add(row);
         }
@@ -45,10 +45,10 @@ final class PlayField {
     }
 
     // Onclick Event Methodendefinition
-    private void fieldValidation(ActionEvent actionEvent) {
+    private void fieldValidation(final ActionEvent actionEvent) {
 
         // Geklicktes Objekt abfangen
-        Field field = (Field) actionEvent.getSource();
+        final Field field = (Field) actionEvent.getSource();
 
         // Abfrage ob das Feld bereits belegt ist
         if (field.owner == null) {
@@ -59,7 +59,7 @@ final class PlayField {
                 // Änderung der Feldeigenschaften
                 field.owner = players.get(playing).name;
                 field.changeColor(players.get(playing).color);
-                Player player = players.get(playing);
+                final Player player = players.get(playing);
                 player.occupied.add(field);
                 players.set(playing, player);
             } else {
@@ -94,7 +94,7 @@ final class PlayField {
                 if (Arrays.stream(playable).anyMatch(i -> i == id)) {
 
                     // Kreation von einem Feld
-                    Field field = new Field(id);
+                    final Field field = new Field(id);
 
                     // Definition vom onclick Event
                     field.setOnAction(this::fieldValidation);
@@ -115,9 +115,9 @@ final class PlayField {
         this.alert.setHeaderText(null);
 
         // Kreation von zwei Spielern
-        Player player1 = new Player("black");
+        final Player player1 = new Player("black");
         player1.setName("Spieler1");
-        Player player2 = new Player("gray");
+        final Player player2 = new Player("gray");
         player2.setName("Spieler2");
 
         // Hinzufügen von den Spielern zum Array
