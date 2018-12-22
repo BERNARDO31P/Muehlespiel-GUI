@@ -24,7 +24,7 @@ public final class Main extends Application {
         final Optional<ButtonType> result = alert.showAndWait();
 
         // Prüfung von der Benutzerantwort
-        if (result.get() != ButtonType.OK) { System.exit(0); }
+        if (result.isPresent() && result.get() != ButtonType.OK) { System.exit(0); }
 
         // Erstellung von einem Spielfeld
         final PlayField playField = new PlayField();
@@ -45,6 +45,6 @@ public final class Main extends Application {
 
     }
 
-    public static void main(String[] args) { launch(args); }
+    public static void main(final String[] args) { launch(args); }
 
 }
