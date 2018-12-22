@@ -57,8 +57,7 @@ public final class PlayField {
             if (players.get(playing).occupied.size() < 9) {
 
                 // Änderung der Feldeigenschaften
-                field.owner = players.get(playing).name;
-                field.changeColor(players.get(playing).color);
+                field.changeInfo(players.get(playing).color, players.get(playing).name);
                 final Player player = players.get(playing);
                 player.occupied.add(field);
                 players.set(playing, player);
@@ -128,10 +127,10 @@ public final class PlayField {
         this.playField.setVgap(15);
 
         // Kreation von einer Fläche in der Objekte hinzugefügt werden können
-        this.scene = new Scene(this.playField, 300, 300);
+        this.scene = new Scene(this.playField, 400, 400);
 
         // Setzung von der CSS Stylesheet
-        this.scene.getStylesheets().add(this.getClass().getResource("css/main.css").toExternalForm());
+        this.scene.getStylesheets().add(this.getClass().getResource("../css/main.css").toExternalForm());
 
         // Aufruf von der Nächsten Klassenmethode, nachdem alles beendet ist
         generatePlayField();

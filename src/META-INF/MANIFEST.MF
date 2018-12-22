@@ -1,3 +1,7 @@
-Manifest-Version: 1.0
+Manifest-Version: 1.0.1
 Main-Class: fm.bernardo.muehlespiel.Main
-
+Created-By: Bernardo de Oliveira
+Last-Change: 22.12.2018 - 23:00
+Application-Name: Mühlespiel GUI
+Application-Description: Muehlespiel mit einer grafischen Oberfläche
+Application-Version: 0.1

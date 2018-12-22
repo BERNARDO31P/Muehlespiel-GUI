@@ -35,8 +35,8 @@ public final class Main extends Application {
         mainWindow.setOnCloseRequest(e -> System.exit(0));
         mainWindow.setMinWidth(275);
         mainWindow.setMinHeight(300);
-        mainWindow.setMaxWidth(450);
-        mainWindow.setMaxHeight(475);
+        mainWindow.setMaxWidth(650);
+        mainWindow.setMaxHeight(675);
         mainWindow.show();
 
         // Berrechnung und Setzung der Fenstergrösse, damit die Proportionen beibehalten bleiben

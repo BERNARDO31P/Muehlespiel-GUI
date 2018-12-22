@@ -8,10 +8,13 @@ final class Field extends Button {
 
     // Eigenschaften vom Feld
     String owner;
-    private int id;
+    int id;
 
     // Methode zur Anpassung der Farbe
-    final void changeColor(final String color) { this.setStyle("-fx-background-color: " + color); }
+    final void changeInfo(final String color, final String owner) {
+        this.setStyle("-fx-background-color: " + color);
+        this.owner = owner;
+    }
 
     // Konstrukteur der Feldes
     Field(final int id) {
