@@ -1,4 +1,4 @@
-package fm.bernardo.muehlespiel;
+package fm.bernardo.muehlespiel.classes;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.HPos;
@@ -11,10 +11,10 @@ import javafx.scene.layout.RowConstraints;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-final class PlayField {
+public final class PlayField {
 
     // Eigenschaften vom Spielfeld sowie Generation von nötigen Instanzvariablen
-    Scene scene;
+    public Scene scene;
     private final GridPane playField = new GridPane();
     private final ArrayList<Player> players = new ArrayList<>();
     private int playing;
@@ -107,7 +107,7 @@ final class PlayField {
     }
 
     // Konstrukteur vom Spielfeld
-    PlayField() {
+    public PlayField() {
 
         // Definition von
         this.playField.setId("mainWindow");

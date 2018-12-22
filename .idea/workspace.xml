@@ -6,18 +6,15 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/PlayField.java" line="140" />
+    <bookmark url="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/PlayField.java" line="140" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mühlespiel/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mühlespiel/fm/bernardo/muehlespiel/Field.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mühlespiel/fm/bernardo/muehlespiel/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mühlespiel/fm/bernardo/muehlespiel/PlayField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mühlespiel/fm/bernardo/muehlespiel/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mühlespiel/fm/bernardo/muehlespiel/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mühlespiel/fm/bernardo/muehlespiel/img/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/PlayField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/PlayField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/Player.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,7 +70,47 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="62" lean-forward="true" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/PlayField.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="30" column="40" lean-forward="true" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/Field.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -90,17 +127,15 @@
         <option value="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Field.java" />
         <option value="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/css/main.css" />
         <option value="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/PlayField.java" />
-        <option value="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Main.java" />
         <option value="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Player.java" />
+        <option value="$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Main.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="543" />
-    <option name="y" value="37" />
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="width" value="1280" />
-    <option name="height" value="1015" />
+    <option name="height" value="1392" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -111,8 +146,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -136,12 +169,21 @@
               <item name="muehlespiel-gui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="muehlespiel" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="muehlespiel-gui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="muehlespiel-gui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="muehlespiel" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -154,7 +196,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544110339435" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545511850091" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -278,16 +320,19 @@
       <workItem from="1544106138521" duration="24000" />
       <workItem from="1544106198557" duration="3298000" />
       <workItem from="1544110310049" duration="31000" />
+      <workItem from="1545501031332" duration="636000" />
+      <workItem from="1545511658787" duration="191000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14787000" />
+    <option name="totallyTimeSpent" value="15614000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1212" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="1392" extended-state="4" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.11553344" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.24149108" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -342,30 +387,6 @@
     <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/img/background.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="31" column="42" lean-forward="true" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -373,10 +394,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/PlayField.java">
+    <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="47" column="65" lean-forward="true" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
+        <state relative-caret-position="390">
+          <caret line="26" column="62" lean-forward="true" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fm/bernardo/muehlespiel/classes/PlayField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="30" column="40" lean-forward="true" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
         </state>
       </provider>
     </entry>

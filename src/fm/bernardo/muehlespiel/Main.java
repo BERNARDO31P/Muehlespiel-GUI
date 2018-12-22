@@ -1,5 +1,6 @@
 package fm.bernardo.muehlespiel;
 
+import fm.bernardo.muehlespiel.classes.PlayField;
 import javafx.application.Application;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

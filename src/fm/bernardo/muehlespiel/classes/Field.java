@@ -1,4 +1,4 @@
-package fm.bernardo.muehlespiel;
+package fm.bernardo.muehlespiel.classes;
 
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
