@@ -10,7 +10,7 @@ final class Player {
     // Eigenschaften vom Spieler
     String color;
     String name;
-    final ArrayList<Field> occupied = new ArrayList<>();
+    int toPlace = 9;
 
     // Methode zur Setzung vom Spielername
     final void setName(final String spieler) {

@@ -24,6 +24,8 @@ final class Field extends Button {
         this.setMaxWidth(Double.MAX_VALUE);
         this.setMaxHeight(Double.MAX_VALUE);
 
+        this.setStyle("-fx-background-color: none");
+
         // Setzung der Form zu einem Kreis
         this.setShape(new Circle(1));
     }
