@@ -1,6 +1,0 @@
-/* Definition von einem Hintergrundbild mit verschiedenen Eigenschaften */
-#mainWindow {
-    -fx-background-image: url('../img/background.png');
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
-}
