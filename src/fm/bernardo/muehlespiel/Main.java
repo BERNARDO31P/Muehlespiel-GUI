@@ -33,10 +33,10 @@ public final class Main extends Application {
         mainWindow.setTitle("Mühlespiel");
         mainWindow.setScene(playField.scene);
         mainWindow.setOnCloseRequest(e -> System.exit(0));
-        mainWindow.setMinWidth(275);
-        mainWindow.setMinHeight(300);
-        mainWindow.setMaxWidth(650);
-        mainWindow.setMaxHeight(675);
+        mainWindow.setMinWidth(475);
+        mainWindow.setMinHeight(500);
+        mainWindow.setMaxWidth(1050);
+        mainWindow.setMaxHeight(1075);
         mainWindow.show();
 
         // Berrechnung und Setzung der Fenstergrösse, damit die Proportionen beibehalten bleiben
