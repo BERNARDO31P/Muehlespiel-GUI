@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 
@@ -325,6 +323,7 @@ final class PlayField {
 
     }
 
+
     // Konstrukteur vom Spielfeld
     PlayField() {
 
@@ -358,27 +357,43 @@ final class PlayField {
         generatePlayField();
     }
 
+
+    // Methode zum Prüfen wie viele Steine ein spezifischer Spieler auf dem Feld hat
     private int getFieldAmount(final String owner) {
-        final AtomicInteger fieldAmount = new AtomicInteger();
-        this.fields.forEach((key, value) -> {
+        int fieldAmount = 0;
+
+        // Schleife, welche jeden Stein auf dem Feld prüft
+        for (final Map.Entry<Integer, Field> entry : this.fields.entrySet()) {
+            final Field value = entry.getValue();
+
+            // Try-catch falls das Feld keinen Besitzer hat
             try {
                 if (value.owner.equals(owner))
-                    fieldAmount.getAndIncrement();
+                    fieldAmount++;
             } catch (Exception ignore) {
             }
-        });
-        return fieldAmount.get();
+        }
+        return fieldAmount;
     }
 
+
+    // Methode zum Prüfen ob ein spezifischer Stein in einer Mühle ist
     private boolean isMill(Field field) {
         boolean isMill = false;
+
+        // Schleife um jede mögliche Mühle zu prüfen
         for (final int[] mill : (ArrayList<int[]>) this.possibilities.get(field.id).get("mills")) {
             for (final int checkField : mill) {
                 try {
+
+                    /* Falls ein Stein in einer Kombination nicht den gleichen Besitzer hat,
+                       wird eine Exception erstellt, welche dann abgefangen wird */
                     if (!this.fields.get(checkField).owner.equals(field.owner)) {
                         throw new Exception();
                     }
                     isMill = true;
+
+                    // Abfangen von der Exception, entweder wenn ein Stein kein oder einen anderen Besitzer hat
                 } catch (Exception e) {
                     isMill = false;
                     break;
@@ -391,20 +406,28 @@ final class PlayField {
         return false;
     }
 
+
+    // Methode zum Prüfen ob der Gegner irgendeinen Stein besitzt, welcher in keiner Mühle ist
     private boolean allMills() {
         final int opponent = this.playing == 0 ? 1 : 0;
-        final AtomicBoolean allMills = new AtomicBoolean(true);
+        boolean allMills = true;
+
+        // Schleife, welche jeden Stein auf dem Feld prüft
         for (final Map.Entry<Integer, Field> entry : this.fields.entrySet()) {
             final Field value = entry.getValue();
+
+            // Try-catch falls ein Feld keinen Besitzer hat
             try {
+
+                // Sobald irgendein Feld in keiner Mühle ist, muss nicht weiter geprüft werden
                 if (value.owner.equals(this.players.get(opponent).name) && !isMill(value)) {
-                    allMills.set(false);
+                    allMills = false;
                     break;
                 }
             } catch (Exception ignore) {
             }
         }
-        return allMills.get();
+        return allMills;
     }
 
 
@@ -414,15 +437,19 @@ final class PlayField {
         // Geklicktes Objekt abfangen
         final Field field = (Field) actionEvent.getSource();
 
-        // Abfrage ob das Feld bereits belegt ist
+        // Abfrage ob das Feld bereits belegt ist und der letzte Spielzug keine Mühle war
         if (field.owner == null && !this.wasMill) {
 
+            // Falls der letze Spielzug eine Anfrage um einen Stein zu bewegen war
             if (this.wantToMove) {
                 this.wantToMove = false;
 
                 final int fieldAmount = getFieldAmount(this.toChange.owner);
 
+                // Der Spieler kann ein Stein nur um ein Feld bewegen, ausser er hat nur noch drei Steine
                 if (IntStream.of((int[]) this.possibilities.get(this.toChange.id).get("neighbours")).anyMatch(x -> x == field.id) || fieldAmount == 3) {
+
+                    // Logik um einen Stein zu bewegen
                     this.toChange.changeInfo("none", null);
                     this.fields.put(this.toChange.id, this.toChange);
                     field.changeInfo(players.get(playing).color, players.get(playing).name);
@@ -446,8 +473,10 @@ final class PlayField {
                 return;
             }
 
+            // Speichert das Feld noch zusätzlich in einem Array um mir das Programmieren zu erleichtern
             this.fields.put(field.id, field);
 
+            // Abfrage ob der Spielzug eine Mühle ergeben hat
             if (isMill(field)) {
                 alert.setContentText("Sie dürfen nun ein Feld von Ihrem Gegner entfernen.");
                 alert.showAndWait();
@@ -455,7 +484,12 @@ final class PlayField {
                 return;
             }
 
+
+            // Abfrage ob der letzte Spielzug eine Mühle war und ob der neu angeklickte Stein entfernt werden darf
         } else if (this.wasMill && !this.players.get(playing).name.equals(field.owner) && field.owner != null) {
+
+            /* Der Stein darf entfernt werden, wenn es in keiner Mühle steht oder wenn
+               alle gegnerische Steine in einer Mühle sind */
             if (!isMill(field) || allMills()) {
                 this.wasMill = false;
                 field.changeInfo("none", null);
@@ -465,8 +499,12 @@ final class PlayField {
                 return;
             }
         } else {
+
+            // Try-catch falls ein Feld keinen Besitzer hat
             try {
                 assert field.owner != null;
+
+                // Falls der angeklickte Stein dem derzeitigen Spieler gehört und er keine mehr plazieren kann
                 if (field.owner.equals(players.get(playing).name) && players.get(playing).toPlace == 0 && !this.wantToMove) {
                     this.wantToMove = true;
                     this.toChange = field;
@@ -476,6 +514,7 @@ final class PlayField {
                     alert.showAndWait();
                     return;
                 }
+                // Falls das Feld keinen Besitzer hat, passiert nichts
             } catch (NullPointerException e) {
                 return;
             }
@@ -485,6 +524,8 @@ final class PlayField {
         this.playing = this.playing == 0 ? 1 : 0;
 
         final String username = this.players.get(playing).name;
+
+        // Falls der Gegner unter drei Steine auf dem Feld besitzt und keine mehr setzen kann, hat er verloren
         if (getFieldAmount(username) < 3 && this.players.get(playing).toPlace == 0) {
             alert.setContentText(username + " hat verloren.");
             alert.showAndWait();
@@ -492,6 +533,7 @@ final class PlayField {
         }
 
     }
+
 
     // Generierung von den Spielfeldern
     private void generateFields() {
@@ -515,6 +557,7 @@ final class PlayField {
                     // Hinzufügen vom Feld zum Spielfeld
                     this.playField.add(field, width, length);
 
+                    // Speichert das Feld noch zusätzlich in einem Array um mir das Programmieren zu erleichtern
                     this.fields.put(id, field);
                 }
             }
