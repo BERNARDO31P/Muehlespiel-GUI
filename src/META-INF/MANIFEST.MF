@@ -4,4 +4,4 @@ Created-By: Bernardo de Oliveira
 Last-Change: 05.01.2019 - 15:30
 Application-Name: Mühlespiel GUI
 Application-Description: Muehlespiel mit einer grafischen Oberfläche
-Application-Version: 1.3
+Application-Version: 1.3.1

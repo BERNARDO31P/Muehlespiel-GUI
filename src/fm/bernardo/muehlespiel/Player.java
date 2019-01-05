@@ -1,8 +1,7 @@
-package fm.bernardo.muehlespiel.classes;
+package fm.bernardo.muehlespiel;
 
 import javafx.scene.control.TextInputDialog;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 final class Player {

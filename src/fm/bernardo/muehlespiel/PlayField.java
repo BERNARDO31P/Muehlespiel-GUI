@@ -1,4 +1,4 @@
-package fm.bernardo.muehlespiel.classes;
+package fm.bernardo.muehlespiel;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.HPos;
@@ -17,13 +17,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 
-public final class PlayField {
+final class PlayField {
 
     // Array welches Definitiert, welche Felder spielbar sind
     private final int[] playable = {0, 3, 6, 8, 10, 12, 16, 17, 18, 21, 22, 23, 25, 26, 27, 30, 31, 32, 36, 38, 40, 42, 45, 48};
 
     // Eigenschaften vom Spielfeld sowie Generation von nötigen Instanzvariablen
-    public Scene scene;
+    Scene scene;
     private final GridPane playField = new GridPane();
     private final ArrayList<Player> players = new ArrayList<>();
     private int playing;
@@ -326,10 +326,12 @@ public final class PlayField {
     }
 
     // Konstrukteur vom Spielfeld
-    public PlayField() {
+    PlayField() {
 
-        // Definition von
+        // Definition von der CSS ID
         this.playField.setId("mainWindow");
+
+
         this.alert.setTitle("Informations Dialog");
         this.alert.setHeaderText(null);
 
@@ -350,7 +352,7 @@ public final class PlayField {
         this.scene = new Scene(this.playField, 700, 700);
 
         // Setzung von der CSS Stylesheet
-        this.scene.getStylesheets().add(this.getClass().getResource("../css/main.css").toExternalForm());
+        this.scene.getStylesheets().add(this.getClass().getResource("/css/main.css").toExternalForm());
 
         // Aufruf von der Nächsten Klassenmethode, nachdem alles beendet ist
         generatePlayField();
