@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 
@@ -354,6 +356,56 @@ public final class PlayField {
         generatePlayField();
     }
 
+    private int getFieldAmount(final String owner) {
+        final AtomicInteger fieldAmount = new AtomicInteger();
+        this.fields.forEach((key, value) -> {
+            try {
+                if (value.owner.equals(owner))
+                    fieldAmount.getAndIncrement();
+            } catch (Exception ignore) {
+            }
+        });
+        return fieldAmount.get();
+    }
+
+    private boolean isMill(Field field) {
+        boolean isMill = false;
+        for (final int[] mill : (ArrayList<int[]>) this.possibilities.get(field.id).get("mills")) {
+            for (final int checkField : mill) {
+                try {
+                    if (!this.fields.get(checkField).owner.equals(field.owner)) {
+                        throw new Exception();
+                    }
+                    isMill = true;
+                } catch (Exception e) {
+                    isMill = false;
+                    break;
+                }
+            }
+            if (isMill) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean allMills() {
+        final int opponent = this.playing == 0 ? 1 : 0;
+        final AtomicBoolean allMills = new AtomicBoolean(true);
+        for (final Map.Entry<Integer, Field> entry : this.fields.entrySet()) {
+            final Field value = entry.getValue();
+            try {
+                if (value.owner.equals(this.players.get(opponent).name) && !isMill(value)) {
+                    allMills.set(false);
+                    break;
+                }
+            } catch (Exception ignore) {
+            }
+        }
+        return allMills.get();
+    }
+
+
     // Onclick Event Methodendefinition
     private void fieldValidation(final ActionEvent actionEvent) {
 
@@ -361,12 +413,14 @@ public final class PlayField {
         final Field field = (Field) actionEvent.getSource();
 
         // Abfrage ob das Feld bereits belegt ist
-        if (field.owner == null) {
+        if (field.owner == null && !this.wasMill) {
 
             if (this.wantToMove) {
                 this.wantToMove = false;
 
-                if (IntStream.of((int[]) this.possibilities.get(this.toChange.id).get("neighbours")).anyMatch(x -> x == field.id)) {
+                final int fieldAmount = getFieldAmount(this.toChange.owner);
+
+                if (IntStream.of((int[]) this.possibilities.get(this.toChange.id).get("neighbours")).anyMatch(x -> x == field.id) || fieldAmount == 3) {
                     this.toChange.changeInfo("none", null);
                     this.fields.put(this.toChange.id, this.toChange);
                     field.changeInfo(players.get(playing).color, players.get(playing).name);
@@ -392,45 +446,48 @@ public final class PlayField {
 
             this.fields.put(field.id, field);
 
-            boolean isMill = false;
-            for (int[] mill : (ArrayList<int[]>) this.possibilities.get(field.id).get("mills")) {
-                for (int checkField : mill) {
-                    try {
-                        if (!this.fields.get(checkField).owner.equals(field.owner)) {
-                            throw new Exception();
-                        }
-                        isMill = true;
-                    } catch (Exception e) {
-                        isMill = false;
-                        break;
-                    }
-                }
-                if (isMill) {
-                    alert.setContentText("Sie dürfen nun ein Feld von Ihrem Gegner entfernen.");
-                    alert.showAndWait();
-                    this.wasMill = true;
-                    return;
-                }
+            if (isMill(field)) {
+                alert.setContentText("Sie dürfen nun ein Feld von Ihrem Gegner entfernen.");
+                alert.showAndWait();
+                this.wasMill = true;
+                return;
             }
 
-        } else if (field.owner.equals(players.get(playing).name) && players.get(playing).toPlace == 0 && !this.wantToMove) {
-            this.wantToMove = true;
-            this.toChange = field;
-            return;
-        } else {
-            if (this.wasMill) {
+        } else if (this.wasMill && !this.players.get(playing).name.equals(field.owner) && field.owner != null) {
+            if (!isMill(field) || allMills()) {
                 this.wasMill = false;
                 field.changeInfo("none", null);
             } else {
-                alert.setContentText("Dieses Feld ist von " + field.owner + " besetzt.");
+                alert.setContentText("Dieses Feld ist in einer Mühle.");
                 alert.showAndWait();
+                return;
+            }
+        } else {
+            try {
+                assert field.owner != null;
+                if (field.owner.equals(players.get(playing).name) && players.get(playing).toPlace == 0 && !this.wantToMove) {
+                    this.wantToMove = true;
+                    this.toChange = field;
+                    return;
+                } else {
+                    alert.setContentText("Dieses Feld ist von " + field.owner + " besetzt.");
+                    alert.showAndWait();
+                    return;
+                }
+            } catch (NullPointerException e) {
                 return;
             }
         }
 
         // Setzung vom spielender Spieler
-        if (playing == 0) playing = 1;
-        else playing = 0;
+        this.playing = this.playing == 0 ? 1 : 0;
+
+        final String username = this.players.get(playing).name;
+        if (getFieldAmount(username) < 3 && this.players.get(playing).toPlace == 0) {
+            alert.setContentText(username + " hat verloren.");
+            alert.showAndWait();
+            System.exit(0);
+        }
 
     }
 
