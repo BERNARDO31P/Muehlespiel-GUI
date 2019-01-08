@@ -388,9 +388,8 @@ final class PlayField {
 
                     /* Falls ein Stein in einer Kombination nicht den gleichen Besitzer hat,
                        wird eine Exception erstellt, welche dann abgefangen wird */
-                    if (!this.fields.get(checkField).owner.equals(field.owner)) {
+                    if (!this.fields.get(checkField).owner.equals(field.owner))
                         throw new Exception();
-                    }
                     isMill = true;
 
                     // Abfangen von der Exception, entweder wenn ein Stein kein oder einen anderen Besitzer hat
@@ -399,9 +398,8 @@ final class PlayField {
                     break;
                 }
             }
-            if (isMill) {
+            if (isMill)
                 return true;
-            }
         }
         return false;
     }

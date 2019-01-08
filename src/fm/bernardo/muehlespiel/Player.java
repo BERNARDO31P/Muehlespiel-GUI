@@ -11,6 +11,11 @@ final class Player {
     String name;
     int toPlace = 9;
 
+    // Konstrukteur vom Spieler, welcher die Farbe setzt
+    Player(final String color) {
+        this.color = color;
+    }
+
     // Methode zur Setzung vom Spielername
     final void setName(final String spieler) {
 
@@ -32,13 +37,8 @@ final class Player {
                 return;
             }
             this.name = result.get();
-        } else {
+        } else
             System.exit(0);
-        }
-
     }
-
-    // Konstrukteur vom Spieler, welcher die Farbe setzt
-    Player (final String color) { this.color = color; }
 
 }
